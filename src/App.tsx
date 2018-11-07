@@ -1,9 +1,26 @@
-import React, { Component } from "react"
+import React from "react"
+import { useState } from "./hooks"
 
-class App extends Component {
-	render() {
-		return <div className="App">Hello World</div>
-	}
+function Counter(props: { label: string }) {
+	const [count, setCount] = useState(0)
+	return (
+		<div>
+			<button onClick={() => setCount(count - 1)}>{"-"}</button>
+			<span>
+				{props.label}: {count}
+			</span>
+			<button onClick={() => setCount(count + 1)}>{"+"}</button>
+		</div>
+	)
 }
 
-export default App
+function TwoCounters() {
+	return (
+		<div>
+			<Counter label="one" />
+			<Counter label="two" />
+		</div>
+	)
+}
+
+export default TwoCounters
